@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story — Encarregado de Produção</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Bold.otf') format('opentype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Regular.otf') format('opentype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'ArchivoNarrow';
+    src: url('ArchivoNarrow-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0e0e0e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
+    gap: 24px;
+    padding: 32px;
+  }
+
+  .story {
+    width: 360px;
+    height: 640px;
+    background: #1B3D2F;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px 42px;
+  }
+
+  .story .top {
+    position: absolute;
+    top: 38px;
+    left: 42px;
+    right: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .story .top .tag {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .story .top .g-logo { height: 30px; width: auto; }
+
+  .story .center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .story .cargo {
+    font-weight: 700;
+    font-size: 31px;
+    color: #FFFFFF;
+    line-height: 1.12;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .story .divider {
+    width: 44px;
+    height: 2px;
+    background: #D7D30E;
+    border-radius: 1px;
+  }
+  .story .unidade {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .story .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 6px;
+  }
+  .story .benefit {
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(255,255,255,0.60);
+    letter-spacing: 0.15px;
+  }
+  .story .provocacao {
+    font-weight: 400;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.32);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 250px;
+    margin-top: 8px;
+  }
+
+  .story .bottom {
+    position: absolute;
+    bottom: 38px;
+    left: 42px;
+    right: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .story .cta {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #D7D30E;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .story .bottom .g-logo { height: 26px; width: auto; opacity: 0.30; }
+
+  .download-btn {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1B3D2F;
+    background: #D7D30E;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+  .download-btn:disabled { opacity: 0.4; cursor: wait; }
+</style>
+</head>
+<body>
+
+<div class="story" id="story-card">
+  <div class="top">
+    <span class="tag">Vaga aberta</span>
+    <img class="g-logo" src="g_gran.svg" alt="Gran">
+  </div>
+
+  <div class="center">
+    <div class="cargo">Encarregado<br>de Produção</div>
+    <div class="divider"></div>
+    <div class="unidade">Caminho das Árvores · 6×1</div>
+    <div class="benefits">
+      <span class="benefit">Premiação trimestral até 20%</span>
+      <span class="benefit">Plano de saúde + alimentação no local</span>
+      <span class="benefit">Desconto 10% na loja</span>
+    </div>
+    <div class="provocacao">Aqui, quem entrega cresce.</div>
+  </div>
+
+  <div class="bottom">
+    <span class="cta">Candidate-se →</span>
+    <img class="g-logo" src="g_gran.svg" alt="g">
+  </div>
+</div>
+
+<button class="download-btn" id="btnDownload" onclick="downloadPNG()">Baixar PNG 1080×1920</button>
+
+<script>
+async function downloadPNG() {
+  const btn = document.getElementById('btnDownload');
+  btn.disabled = true;
+  btn.textContent = 'Gerando...';
+
+  try {
+    const el = document.getElementById('story-card');
+    const canvas = await html2canvas(el, {
+      scale: 3.0,           // 360 × 3.0 = 1080
+      useCORS: true,
+      backgroundColor: null,
+      logging: false
+    });
+
+    // Force exact 1080×1920
+    const finalCanvas = document.createElement('canvas');
+    finalCanvas.width = 1080;
+    finalCanvas.height = 1920;
+    const ctx = finalCanvas.getContext('2d');
+    ctx.drawImage(canvas, 0, 0, 1080, 1920);
+
+    const link = document.createElement('a');
+    link.download = 'story-1080x1920.png';
+    link.href = finalCanvas.toDataURL('image/png');
+    link.click();
+
+    btn.textContent = 'PNG salvo ✓';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Baixar PNG 1080×1920';
+    }, 2000);
+  } catch (e) {
+    btn.textContent = 'Erro: ' + e.message;
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
