@@ -2,18 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1080, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feed — Encarregado de Produção</title>
 <style>
   @font-face {
     font-family: 'Moreno';
     src: url('Moreno-Bold.otf') format('opentype');
     font-weight: 700;
-  }
-  @font-face {
-    font-family: 'Moreno';
-    src: url('Moreno-Medium.otf') format('opentype');
-    font-weight: 500;
   }
   @font-face {
     font-family: 'Moreno';
@@ -27,108 +22,102 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body {
-    width: 1080px;
-    height: 1080px;
-    overflow: hidden;
-    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
-  }
+  html, body { width: 100vw; height: 100vh; overflow: hidden; }
 
   .feed {
-    width: 1080px;
-    height: 1080px;
+    width: 100vw;
+    height: 100vh;
     background: #1B3D2F;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 119px 135px;
+    padding: 11vh 12.5vw;
+    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
+    aspect-ratio: 1 / 1;
   }
 
-  .feed .top-tag {
+  .top-tag {
     position: absolute;
-    top: 81px;
-    left: 135px;
+    top: 7.5vh;
+    left: 12.5vw;
     font-family: 'ArchivoNarrow', sans-serif;
-    font-size: 23px;
+    font-size: 2.13vw;
     font-weight: 600;
     color: rgba(255,255,255,0.25);
-    letter-spacing: 8.1px;
+    letter-spacing: 0.75vw;
     text-transform: uppercase;
   }
 
-  .feed .content {
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 43px;
+    gap: 4vh;
   }
-  .feed .cargo {
+  .cargo {
     font-weight: 700;
-    font-size: 67.5px;
+    font-size: 6.25vw;
     color: #FFFFFF;
     line-height: 1.12;
-    letter-spacing: 1.35px;
+    letter-spacing: 0.13vw;
     text-transform: uppercase;
   }
-  .feed .divider {
-    width: 97px;
-    height: 5.4px;
+  .divider {
+    width: 9vw;
+    height: 0.5vh;
     background: #D7D30E;
-    border-radius: 2.7px;
+    border-radius: 2px;
   }
-  .feed .info {
+  .info {
     font-family: 'ArchivoNarrow', sans-serif;
     font-weight: 600;
-    font-size: 28.4px;
+    font-size: 2.63vw;
     color: rgba(255,255,255,0.40);
-    letter-spacing: 5.4px;
+    letter-spacing: 0.5vw;
     text-transform: uppercase;
   }
-  .feed .benefits {
+  .benefits {
     display: flex;
     flex-direction: column;
-    gap: 16.2px;
+    gap: 1.5vh;
   }
-  .feed .benefit {
+  .benefit {
     font-weight: 400;
-    font-size: 33.75px;
+    font-size: 3.13vw;
     color: rgba(255,255,255,0.55);
   }
-  .feed .provocacao {
+  .provocacao {
     font-weight: 400;
-    font-size: 29.7px;
+    font-size: 2.75vw;
     color: rgba(255,255,255,0.28);
     font-style: italic;
     line-height: 1.55;
-    margin-top: 5.4px;
+    margin-top: 0.5vh;
   }
 
-  .feed .bottom-bar {
+  .bottom-bar {
     position: absolute;
-    bottom: 75.6px;
-    left: 135px;
-    right: 135px;
+    bottom: 7vh;
+    left: 12.5vw;
+    right: 12.5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .feed .cta {
+  .cta {
     font-family: 'ArchivoNarrow', sans-serif;
-    font-size: 24.3px;
+    font-size: 2.25vw;
     font-weight: 600;
     color: #D7D30E;
-    letter-spacing: 6.75px;
+    letter-spacing: 0.63vw;
     text-transform: uppercase;
   }
-  .feed .bottom-bar .g-logo { height: 59.4px; width: auto; opacity: 0.30; }
+  .bottom-bar .g-logo { height: 5.5vh; width: auto; opacity: 0.30; }
 </style>
 </head>
 <body>
-
 <div class="feed">
   <div class="top-tag">Vaga aberta</div>
-
   <div class="content">
     <div class="cargo">Encarregado<br>de Produção</div>
     <div class="divider"></div>
@@ -140,12 +129,10 @@
     </div>
     <div class="provocacao">Aqui, quem entrega cresce.</div>
   </div>
-
   <div class="bottom-bar">
     <span class="cta">Candidate-se →</span>
     <img class="g-logo" src="g_gran.svg" alt="g">
   </div>
 </div>
-
 </body>
 </html>
