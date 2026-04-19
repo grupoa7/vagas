@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feed — Encarregado de Produção</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   @font-face {
     font-family: 'Moreno';
@@ -22,101 +23,129 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100vw; height: 100vh; overflow: hidden; }
+  body {
+    background: #0e0e0e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
+    gap: 24px;
+    padding: 32px;
+  }
 
   .feed {
-    width: 100vw;
-    height: 100vh;
+    width: 400px;
+    height: 400px;
     background: #1B3D2F;
+    border-radius: 12px;
+    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 11vh 12.5vw;
-    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
-    aspect-ratio: 1 / 1;
+    padding: 44px 50px;
   }
 
-  .top-tag {
+  .feed .top-tag {
     position: absolute;
-    top: 7.5vh;
-    left: 12.5vw;
+    top: 30px;
+    left: 50px;
     font-family: 'ArchivoNarrow', sans-serif;
-    font-size: 2.13vw;
+    font-size: 8.5px;
     font-weight: 600;
     color: rgba(255,255,255,0.25);
-    letter-spacing: 0.75vw;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
 
-  .content {
+  .feed .content {
     display: flex;
     flex-direction: column;
-    gap: 4vh;
+    gap: 16px;
   }
-  .cargo {
+  .feed .cargo {
     font-weight: 700;
-    font-size: 6.25vw;
+    font-size: 25px;
     color: #FFFFFF;
     line-height: 1.12;
-    letter-spacing: 0.13vw;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
   }
-  .divider {
-    width: 9vw;
-    height: 0.5vh;
+  .feed .divider {
+    width: 36px;
+    height: 2px;
     background: #D7D30E;
-    border-radius: 2px;
+    border-radius: 1px;
   }
-  .info {
+  .feed .info {
     font-family: 'ArchivoNarrow', sans-serif;
     font-weight: 600;
-    font-size: 2.63vw;
+    font-size: 10.5px;
     color: rgba(255,255,255,0.40);
-    letter-spacing: 0.5vw;
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
-  .benefits {
+  .feed .benefits {
     display: flex;
     flex-direction: column;
-    gap: 1.5vh;
+    gap: 6px;
   }
-  .benefit {
+  .feed .benefit {
     font-weight: 400;
-    font-size: 3.13vw;
+    font-size: 12.5px;
     color: rgba(255,255,255,0.55);
   }
-  .provocacao {
+  .feed .provocacao {
     font-weight: 400;
-    font-size: 2.75vw;
+    font-size: 11px;
     color: rgba(255,255,255,0.28);
     font-style: italic;
     line-height: 1.55;
-    margin-top: 0.5vh;
+    margin-top: 2px;
   }
 
-  .bottom-bar {
+  .feed .bottom-bar {
     position: absolute;
-    bottom: 7vh;
-    left: 12.5vw;
-    right: 12.5vw;
+    bottom: 28px;
+    left: 50px;
+    right: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .cta {
+  .feed .cta {
     font-family: 'ArchivoNarrow', sans-serif;
-    font-size: 2.25vw;
+    font-size: 9px;
     font-weight: 600;
     color: #D7D30E;
-    letter-spacing: 0.63vw;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
   }
-  .bottom-bar .g-logo { height: 5.5vh; width: auto; opacity: 0.30; }
+  .feed .bottom-bar .g-logo { height: 22px; width: auto; opacity: 0.30; }
+
+  .download-btn {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1B3D2F;
+    background: #D7D30E;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+  .download-btn:disabled { opacity: 0.4; cursor: wait; }
 </style>
 </head>
 <body>
-<div class="feed">
+
+<div class="feed" id="feed-card">
   <div class="top-tag">Vaga aberta</div>
   <div class="content">
     <div class="cargo">Encarregado<br>de Produção</div>
@@ -134,5 +163,47 @@
     <img class="g-logo" src="g_gran.svg" alt="g">
   </div>
 </div>
+
+<button class="download-btn" id="btnDownload" onclick="downloadPNG()">Baixar PNG 1080×1080</button>
+
+<script>
+async function downloadPNG() {
+  const btn = document.getElementById('btnDownload');
+  btn.disabled = true;
+  btn.textContent = 'Gerando...';
+
+  try {
+    const el = document.getElementById('feed-card');
+    const canvas = await html2canvas(el, {
+      scale: 2.7,           // 400 × 2.7 = 1080
+      useCORS: true,
+      backgroundColor: null,
+      logging: false,
+      borderRadius: 0,      // Remove border-radius for clean export
+    });
+
+    // Force exact 1080×1080
+    const finalCanvas = document.createElement('canvas');
+    finalCanvas.width = 1080;
+    finalCanvas.height = 1080;
+    const ctx = finalCanvas.getContext('2d');
+    ctx.drawImage(canvas, 0, 0, 1080, 1080);
+
+    const link = document.createElement('a');
+    link.download = 'feed-1080x1080.png';
+    link.href = finalCanvas.toDataURL('image/png');
+    link.click();
+
+    btn.textContent = 'PNG salvo ✓';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Baixar PNG 1080×1080';
+    }, 2000);
+  } catch (e) {
+    btn.textContent = 'Erro: ' + e.message;
+    btn.disabled = false;
+  }
+}
+</script>
 </body>
 </html>
