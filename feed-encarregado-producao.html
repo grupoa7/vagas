@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>Feed — Encarregado de Produção</title>
+<style>
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Bold.otf') format('opentype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Medium.otf') format('opentype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Regular.otf') format('opentype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'ArchivoNarrow';
+    src: url('ArchivoNarrow-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Moreno', 'Helvetica Neue', sans-serif;
+  }
+
+  .feed {
+    width: 1080px;
+    height: 1080px;
+    background: #1B3D2F;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 119px 135px;
+  }
+
+  .feed .top-tag {
+    position: absolute;
+    top: 81px;
+    left: 135px;
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 8.1px;
+    text-transform: uppercase;
+  }
+
+  .feed .content {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+  }
+  .feed .cargo {
+    font-weight: 700;
+    font-size: 67.5px;
+    color: #FFFFFF;
+    line-height: 1.12;
+    letter-spacing: 1.35px;
+    text-transform: uppercase;
+  }
+  .feed .divider {
+    width: 97px;
+    height: 5.4px;
+    background: #D7D30E;
+    border-radius: 2.7px;
+  }
+  .feed .info {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 28.4px;
+    color: rgba(255,255,255,0.40);
+    letter-spacing: 5.4px;
+    text-transform: uppercase;
+  }
+  .feed .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 16.2px;
+  }
+  .feed .benefit {
+    font-weight: 400;
+    font-size: 33.75px;
+    color: rgba(255,255,255,0.55);
+  }
+  .feed .provocacao {
+    font-weight: 400;
+    font-size: 29.7px;
+    color: rgba(255,255,255,0.28);
+    font-style: italic;
+    line-height: 1.55;
+    margin-top: 5.4px;
+  }
+
+  .feed .bottom-bar {
+    position: absolute;
+    bottom: 75.6px;
+    left: 135px;
+    right: 135px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .feed .cta {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 24.3px;
+    font-weight: 600;
+    color: #D7D30E;
+    letter-spacing: 6.75px;
+    text-transform: uppercase;
+  }
+  .feed .bottom-bar .g-logo { height: 59.4px; width: auto; opacity: 0.30; }
+</style>
+</head>
+<body>
+
+<div class="feed">
+  <div class="top-tag">Vaga aberta</div>
+
+  <div class="content">
+    <div class="cargo">Encarregado<br>de Produção</div>
+    <div class="divider"></div>
+    <div class="info">Caminho das Árvores · Escala 6×1</div>
+    <div class="benefits">
+      <span class="benefit">Premiação trimestral até 20%</span>
+      <span class="benefit">Plano de saúde + alimentação no local</span>
+      <span class="benefit">Desconto 10% na loja</span>
+    </div>
+    <div class="provocacao">Aqui, quem entrega cresce.</div>
+  </div>
+
+  <div class="bottom-bar">
+    <span class="cta">Candidate-se →</span>
+    <img class="g-logo" src="g_gran.svg" alt="g">
+  </div>
+</div>
+
+</body>
+</html>
