@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auxiliar de Serviços Gerais — Gran</title>
+<style>
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Bold.otf') format('opentype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Medium.otf') format('opentype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Regular.otf') format('opentype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'ArchivoNarrow';
+    src: url('ArchivoNarrow-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1B3D2F;
+    font-family: 'Moreno', 'Helvetica Neue', Arial, sans-serif;
+    color: #FFFFFF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page {
+    max-width: 600px;
+    width: 100%;
+    padding: 48px 32px 64px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .header .tag {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .header .g-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .hero .cargo {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero .divider {
+    width: 44px;
+    height: 2px;
+    background: #D7D30E;
+    border-radius: 1px;
+    margin: 0 auto 20px;
+  }
+  .hero .meta {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .section {
+    margin-bottom: 44px;
+  }
+  .section-title {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #D7D30E;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .section p {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .section ul li {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .section ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: #D7D30E;
+    border-radius: 50%;
+  }
+
+  .sep {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 44px;
+  }
+
+  .cta-section {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 48px;
+  }
+  .cta-button {
+    display: inline-block;
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #1B3D2F;
+    background: #D7D30E;
+    padding: 16px 48px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta-button:hover {
+    opacity: 0.88;
+  }
+  .cta-note {
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(255,255,255,0.30);
+    margin-top: 14px;
+  }
+  .help-block {
+    text-align: center;
+    margin: 36px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .help-block .help-label {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 8px;
+  }
+  .help-block .help-number {
+    font-family: 'Moreno', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #D7D30E;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer .g-logo {
+    height: 28px;
+    width: auto;
+    opacity: 0.20;
+  }
+
+  @media (max-width: 480px) {
+    .page { padding: 36px 20px 48px; }
+    .hero .cargo { font-size: 26px; }
+    .section p, .section ul li { font-size: 14px; }
+    .cta-button { padding: 14px 36px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <span class="tag">Vaga aberta</span>
+    <img class="g-logo" src="g_gran.svg" alt="Gran">
+  </div>
+
+  <div class="hero">
+    <div class="cargo">Auxiliar de<br>Serviços Gerais</div>
+    <div class="divider"></div>
+    <div class="meta">Caminho das Árvores · Salvador/BA · Escala 6×1</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sobre o Gran</div>
+    <p>O Gran é um mercado de proximidade em Salvador que nasceu com um objetivo simples e difícil: conquistar a confiança dos clientes com produtos de qualidade e atendimento diferenciado.</p>
+    <p>Fazemos parte do Grupo A7 e estamos construindo algo que ainda não existe no varejo alimentar brasileiro. Quem entra agora participa da construção.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que você vai fazer</div>
+    <ul>
+      <li>Manter a limpeza e higienização do salão de vendas, sanitários, escritórios e áreas comuns durante todo o expediente.</li>
+      <li>Apoiar a equipe Gran Mesa com a higienização da área de produção (cozinha, padaria, fatiados), seguindo padrões de boas práticas de manipulação de alimentos.</li>
+      <li>Cuidar do recolhimento e descarte correto do lixo, separando reciclável quando aplicável.</li>
+      <li>Repor materiais de limpeza e itens dos sanitários antes que faltem.</li>
+      <li>Comunicar à liderança qualquer problema de infraestrutura (vazamento, lâmpada queimada, equipamento com defeito).</li>
+      <li>Atuar com discrição diante do cliente, sem interromper a experiência de compra.</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que a gente espera de você</div>
+    <ul>
+      <li>Não exigimos experiência prévia. Se nunca trabalhou na função, a gente ensina.</li>
+      <li>Disponibilidade para trabalhar em turnos variáveis (manhã, intermediário ou fechamento), conforme escala da equipe.</li>
+      <li>Disposição física para a rotina (ficar em pé, deslocamento na loja, uso de produtos de limpeza).</li>
+      <li>Comprometimento com horário e assiduidade. A equipe inteira depende disso.</li>
+      <li>Atenção aos detalhes. Limpeza bem feita é o que o cliente percebe antes de qualquer outra coisa.</li>
+      <li>Iniciativa para resolver o que aparecer sem esperar ordem.</li>
+      <li>Vontade real de fazer a empresa crescer e crescer junto.</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que esperar nos primeiros 90 dias</div>
+    <p>No início, você vai conhecer a rotina das duas frentes que essa vaga atende: as áreas comuns da loja (salão de vendas, sanitários, escritórios) e a área de produção (cozinha Gran Mesa, padaria e fatiados). Cada uma tem ritmo e padrão de higienização próprios, e você vai aprender os dois.</p>
+    <p>Você vai contar com o apoio da liderança e da equipe pra aprender o que precisar. Quem entrega bem nos primeiros meses e demonstra cuidado real com o ambiente vira referência rápido. O caminho de crescimento existe e é claro: 2 trimestres consecutivos entregando bem e você vira alvo de oportunidade dentro do Gran.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que a gente oferece</div>
+    <ul>
+      <li>Jornada de 8h20 (sendo 7h20 trabalhadas + 1h de descanso), escala 6×1, em turnos variáveis entre 6h e 19h conforme escala da equipe.</li>
+      <li>Remuneração que respeita sua experiência.</li>
+      <li>Premiação trimestral de até 20% sobre a soma do salário dos 3 meses (Programa Super).</li>
+      <li>Plano de saúde Hapvida (coparticipação).</li>
+      <li>Alimentação no local, sem custo.</li>
+      <li>Desconto 10% na loja.</li>
+      <li>Critério claro de crescimento: 2 trimestres consecutivos entregando bem após o período de experiência e você vira alvo de oportunidade.</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cta-section">
+    <a class="cta-button" href="https://app.pipefy.com/public/form/9JRTc2uD" target="_blank">Candidate-se</a>
+    <div class="cta-note">Você será direcionado para o formulário de candidatura</div>
+    <div class="help-block">
+      <div class="help-label">Dúvidas sobre a vaga? Fale com o RH</div>
+      <div class="help-number">WhatsApp (71) 99634-7896</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="g-logo" src="g_gran.svg" alt="Gran">
+  </div>
+
+</div>
+
+</body>
+</html>
