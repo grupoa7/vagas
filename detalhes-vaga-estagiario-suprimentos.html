@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estagiário de Suprimentos — Gran</title>
+<style>
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Bold.otf') format('opentype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Medium.otf') format('opentype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Moreno';
+    src: url('Moreno-Regular.otf') format('opentype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'ArchivoNarrow';
+    src: url('ArchivoNarrow-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1B3D2F;
+    font-family: 'Moreno', 'Helvetica Neue', Arial, sans-serif;
+    color: #FFFFFF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page {
+    max-width: 600px;
+    width: 100%;
+    padding: 48px 32px 64px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .header .tag {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .header .g-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .hero .cargo {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero .divider {
+    width: 44px;
+    height: 2px;
+    background: #D7D30E;
+    border-radius: 1px;
+    margin: 0 auto 20px;
+  }
+  .hero .meta {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .section {
+    margin-bottom: 44px;
+  }
+  .section-title {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #D7D30E;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .section p {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .section ul li {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .section ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: #D7D30E;
+    border-radius: 50%;
+  }
+
+  .sep {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 44px;
+  }
+
+  .cta-section {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 48px;
+  }
+  .cta-button {
+    display: inline-block;
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #1B3D2F;
+    background: #D7D30E;
+    padding: 16px 48px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta-button:hover {
+    opacity: 0.88;
+  }
+  .cta-note {
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(255,255,255,0.30);
+    margin-top: 14px;
+  }
+  .help-block {
+    text-align: center;
+    margin: 36px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .help-block .help-label {
+    font-family: 'ArchivoNarrow', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 8px;
+  }
+  .help-block .help-number {
+    font-family: 'Moreno', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #D7D30E;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer .g-logo {
+    height: 28px;
+    width: auto;
+    opacity: 0.20;
+  }
+
+  @media (max-width: 480px) {
+    .page { padding: 36px 20px 48px; }
+    .hero .cargo { font-size: 26px; }
+    .section p, .section ul li { font-size: 14px; }
+    .cta-button { padding: 14px 36px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <span class="tag">Vaga aberta</span>
+    <img class="g-logo" src="g_gran.svg" alt="Gran">
+  </div>
+
+  <div class="hero">
+    <div class="cargo">Estagiário<br>de Suprimentos</div>
+    <div class="divider"></div>
+    <div class="meta">Caminho das Árvores · Salvador/BA · Estágio 30h semanais</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sobre o Gran</div>
+    <p>O Gran é um mercado de proximidade em Salvador que nasceu com um objetivo simples e difícil: conquistar a confiança dos clientes com produtos de qualidade e atendimento diferenciado.</p>
+    <p>Fazemos parte do Grupo A7 e estamos construindo algo que ainda não existe no varejo alimentar brasileiro. Quem entra agora participa da construção.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que você vai fazer</div>
+    <ul>
+            <li>Cotação com fornecedores, buscando o melhor preço e a melhor condição</li>
+      <li>Envio e acompanhamento dos pedidos de compra até a mercadoria chegar na loja</li>
+      <li>Atualização dos relatórios gerenciais da área</li>
+      <li>Auditorias de estoque</li>
+      <li>Acompanhamento de validades e das ofertas em andamento</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que a gente espera de você</div>
+    <ul>
+            <li>Estar cursando ensino superior, em qualquer curso</li>
+      <li>Excel em nível avançado. Aqui não é um detalhe do currículo, é ferramenta de trabalho diária</li>
+      <li>Organização e atenção ao detalhe. Um erro de cotação ou de pedido vira falta de produto na gôndola</li>
+      <li>Iniciativa para resolver problemas sem esperar ordem</li>
+      <li>Vontade real de aprender o varejo por dentro e crescer junto com a empresa</li>
+      <li>Comprometimento com horário e assiduidade</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que esperar nos primeiros 90 dias</div>
+    <p>Nos primeiros 90 dias você vai entender como funciona a rotina de compras da loja por dentro: aprender a rodar a cotação com os fornecedores, acompanhar os pedidos até a entrega e enxergar o efeito de cada decisão na gôndola. É trabalho de detalhe, e o detalhe aqui custa venda.</p>
+    <p>Você vai ter o apoio direto da gestão da loja para aprender. O que a gente espera em troca é evolução visível: no fim desse período você já deve estar tocando a cotação e o acompanhamento de pedidos com autonomia. Quem chega nesse ponto entra no radar de efetivação. Não é promessa vaga, é o caminho que já aconteceu aqui.</p>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="section">
+    <div class="section-title">O que a gente oferece</div>
+    <ul>
+            <li>Bolsa-auxílio de R$ 1.300</li>
+      <li>Vale-transporte</li>
+      <li>Jornada de 8h às 15h, com 1h de almoço, de segunda a sexta, 30h semanais</li>
+      <li>Premiação trimestral de até 20% sobre a soma da bolsa dos 3 meses (Programa Super)</li>
+      <li>Alimentação no local, sem custo</li>
+      <li>Desconto 10% na loja</li>
+      <li>Estágio contratado direto com a empresa, sem agente de integração</li>
+      <li>Caminho real de efetivação para quem entrega</li>
+    </ul>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cta-section">
+    <a class="cta-button" href="https://app.pipefy.com/public/form/9JRTc2uD" target="_blank">Candidate-se</a>
+    <div class="cta-note">Você será direcionado para o formulário de candidatura</div>
+      <div class="help-block">
+      <div class="help-label">Dúvidas sobre a vaga? Fale com o RH</div>
+      <div class="help-number">WhatsApp (71) 99634-7896</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="g-logo" src="g_gran.svg" alt="Gran">
+  </div>
+
+</div>
+
+</body>
+</html>
